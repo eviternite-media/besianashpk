@@ -9,7 +9,7 @@ const displayFont = Barlow_Semi_Condensed({ variable: "--font-display", subsets:
 const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cyclon-kosovo.multipllando200.chatgpt.site"),
+  metadataBase: new URL("https://besianashpk.com"),
   title: { default: "CYCLON Kosovo — BESIANA Sh.P.K.", template: "%s | CYCLON Kosovo" },
   description: "Lubrifikantë profesionalë CYCLON në Kosovë. Distributor zyrtar: BESIANA Sh.P.K.",
   openGraph: { title: "CYCLON Kosovo — BESIANA Sh.P.K.", description: "Teknologji ndërkombëtare. Mbështetje lokale.", locale: "sq_AL", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "BESIANA Sh.P.K. — Distributor zyrtar i CYCLON në Kosovë" }] },
