@@ -17,12 +17,14 @@ export function generateStaticParams() { return products.map((product) => ({ slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const product = productBySlug((await params).slug);
   if (!product) return {};
+  const socialImage = product.image ? new URL(product.image, "https://besianashpk.com").toString() : null;
   return {
     title: product.name,
     description: productCardDescription(product),
     keywords: articleKeywords(product),
     alternates: { canonical: `/produktet/${product.slug}` },
-    openGraph: { title: product.name, description: productCardDescription(product), images: product.image ? [{ url: product.image, alt: product.name }] : undefined },
+    openGraph: { title: product.name, description: productCardDescription(product), url: `/produktet/${product.slug}`, images: socialImage ? [{ url: socialImage, alt: product.name }] : [] },
+    twitter: { card: socialImage ? "summary_large_image" : "summary", title: product.name, description: productCardDescription(product), images: socialImage ? [socialImage] : [] },
   };
 }
 
