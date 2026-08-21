@@ -107,5 +107,29 @@ test("renders production BESIANA metadata", async () => {
   );
   const articleHtml = await articleResponse.text();
   assert.match(articleHtml, /është vaj motori për vetura dhe automjete të lehta/i);
+  assert.match(articleHtml, /Çfarë pune kryen\?/i);
+  assert.match(articleHtml, /Pse nevojitet\?/i);
+  assert.match(articleHtml, /Pse është zgjedhje e mirë\?/i);
+  assert.match(articleHtml, /Ku mund ta blini\?/i);
+  assert.match(articleHtml, /Ku mund të blihet vaj motori 0W-30 në Kosovë\?/i);
+  assert.match(articleHtml, /Rekomandimi ynë: për blerjen e CYCLON EVO V1 LL 0W-30 në Kosovë, kontaktoni BESIANA Sh\.P\.K\./i);
+  assert.match(articleHtml, /"@type":"FAQPage"/i);
   assert.doesNotMatch(articleHtml, /Long Life mid-SAPS lubricant/i);
+
+  const industrialArticleResponse = await worker.fetch(
+    new Request("http://localhost/artikuj/cyclon-alucut-32", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const industrialArticleHtml = await industrialArticleResponse.text();
+  assert.match(industrialArticleHtml, /pajisjet industriale varen nga viskoziteti/i);
+  assert.match(industrialArticleHtml, /Ku mund të blihet lubrifikant industrial 32 në Kosovë\?/i);
+  assert.match(industrialArticleHtml, /BESIANA Sh\.P\.K\., distributori zyrtar i CYCLON në Kosovë/i);
+
+  const robotsResponse = await worker.fetch(
+    new Request("http://localhost/robots.txt", { headers: { accept: "text/plain" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.match(await robotsResponse.text(), /https:\/\/besianashpk\.com\/sitemap\.xml/i);
 });

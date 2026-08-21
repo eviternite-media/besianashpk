@@ -330,6 +330,13 @@ mark { background: #ddd7ca; color: inherit; padding: 0 2px; }
 .articleReadingContent > section { padding-bottom: 70px; margin-bottom: 70px; border-bottom: 1px solid var(--line); }
 .articleSectionNo { font: 9px var(--font-mono); }.articleReadingContent h2 { margin: 17px 0 28px; font-size: clamp(38px, 4.4vw, 58px); line-height: .98; letter-spacing: -.052em; }.articleReadingContent h3 { margin: 35px 0 17px; font-size: 22px; }
 .articleReadingContent p { color: #4d4d49; font-size: 16px; line-height: 1.85; }
+.articleReadingContent p + p { margin-top: 20px; }
+.articleBenefitList { display: grid; gap: 10px; margin: 28px 0 32px; padding: 0; list-style: none; }
+.articleBenefitList li { position: relative; padding: 17px 18px 17px 46px; border: 1px solid var(--line); background: var(--milk); font-size: 14px; line-height: 1.6; }
+.articleBenefitList li::before { content: "✓"; position: absolute; left: 18px; top: 17px; font-weight: 800; }
+.articleFaq > div { padding: 24px 0; border-top: 1px solid var(--line); }
+.articleFaq > div h3 { margin: 0 0 10px; font-size: 20px; }
+.articleFaq > div p { margin: 0; }
 .officialArticleCopy { margin: 28px 0; padding: 30px; border-left: 3px solid #111; background: var(--milk); color: #292927; font-size: 16px; line-height: 1.85; }
 .articleReadingContent ol { margin: 30px 0; padding: 0; list-style: none; counter-reset: articleSteps; }.articleReadingContent ol li { counter-increment: articleSteps; position: relative; padding: 17px 0 17px 50px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.6; }.articleReadingContent ol li::before { content: counter(articleSteps, decimal-leading-zero); position: absolute; left: 0; font: 9px var(--font-mono); }
 .articleSpecTable { border-top: 1px solid #111; }.articleSpecTable div { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); }.articleSpecTable span { color: var(--muted); font: 7px var(--font-mono); }.articleSpecTable strong { font: 10px var(--font-mono); overflow-wrap: anywhere; }
@@ -337,6 +344,13 @@ mark { background: #ddd7ca; color: inherit; padding: 0 2px; }
 .articleOfficialLinks { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 27px; }
 .articleInlineCta { display: grid; grid-template-columns: 1fr auto; gap: 18px; margin-top: 35px; padding: 25px; background: #111; color: #fff; }.articleInlineCta div { grid-row: span 2; display: flex; flex-direction: column; gap: 10px; }.articleInlineCta div span { color: #aaa; font: 7px var(--font-mono); }.articleInlineCta div strong { font-size: 20px; }.articleInlineCta > a { border-bottom: 1px solid #666; padding-bottom: 5px; font-size: 12px; }
 .articleRecommendationGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; margin-top: 22px; }.articleRecommendationGrid > a { padding: 15px; border: 1px solid var(--line); background: #fff; }.articleRecommendationGrid > a > div { position: relative; height: 280px; background: #fff; }.articleRecommendationGrid img { object-fit: contain !important; padding: 28px; }.articleRecommendationGrid small { color: var(--muted); font: 7px var(--font-mono); }.articleRecommendationGrid h3 { min-height: 75px; margin: 13px 0; font-size: 23px; line-height: 1.08; }.articleRecommendationGrid > a > strong { font-size: 11px; }
+.articleFinalRecommendation { padding: 95px 0 105px; background: #111; color: #fff; }
+.articleFinalRecommendation .container { max-width: 980px; }
+.articleFinalRecommendation span { color: #aaa; font: 9px var(--font-mono); letter-spacing: .12em; }
+.articleFinalRecommendation h2 { margin: 18px 0 24px; font-size: clamp(42px, 6vw, 72px); line-height: .95; }
+.articleFinalRecommendation p { max-width: 850px; color: #c5c5c0; font-size: 17px; line-height: 1.85; }
+.articleFinalRecommendation div > div { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.articleFinalRecommendation a { padding: 14px 18px; border: 1px solid #666; font-size: 12px; font-weight: 800; }
 
 /* Company, content and forms */
 .splitStory, .editorialSection, .distributorSection, .sectorsSection, .standardsSection, .contactSection, .knowledgeCta, .legalPage > section:last-child { padding: 100px 0 120px; background: #fff; }
