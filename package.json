@@ -19,6 +19,7 @@
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "drizzle-orm": "0.45.2",
     "next": "16.2.6",
     "react": "19.2.6",
@@ -43,5 +44,5 @@
     "wrangler": "4.92.0"
   },
   "type": "module",
-  "displayName": "CYCLON Kosovo \u2014 BESIANA Sh.P.K."
+  "displayName": "CYCLON Kosovo — BESIANA Sh.P.K."
 }
