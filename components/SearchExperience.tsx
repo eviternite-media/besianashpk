@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   articleExcerpt,
@@ -27,6 +28,7 @@ function Highlight({ text, query }: { text: string; query: string }) {
 }
 
 export default function SearchExperience({ products, initialQuery = "" }: { products: Product[]; initialQuery?: string }) {
+  const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,7 +56,7 @@ export default function SearchExperience({ products, initialQuery = "" }: { prod
       setActiveSuggestion((value) => Math.max(value - 1, 0));
     } else if (event.key === "Enter" && activeSuggestion >= 0) {
       event.preventDefault();
-      window.location.href = `/produktet/${suggestions[activeSuggestion].slug}`;
+      router.push(`/produktet/${suggestions[activeSuggestion].slug}`);
     } else if (event.key === "Escape") {
       setActiveSuggestion(-1);
       inputRef.current?.blur();

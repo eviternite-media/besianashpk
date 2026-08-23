@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   applicationName: "BESIANA Sh.P.K.",
   title: { default: "BESIANA Sh.P.K.", template: "%s | BESIANA Sh.P.K." },
   description: "Lubrifikantë profesionalë CYCLON në Kosovë. Distributor zyrtar: BESIANA Sh.P.K.",
-  alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/favicon-besiana-144.png", type: "image/png", sizes: "144x144" }],
     shortcut: ["/favicon-besiana-144.png"],

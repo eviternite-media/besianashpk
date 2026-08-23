@@ -7,6 +7,7 @@ import { products } from "../../data/products";
 export const metadata: Metadata = {
   title: "BESIANA dhe historia e CYCLON",
   description: "BESIANA Sh.P.K. është distributor i produkteve CYCLON në tërë Kosovën. Njihuni me CYCLON, historinë dhe zhvillimin e markës.",
+  alternates: { canonical: "/rreth-nesh" },
 };
 
 const history = [

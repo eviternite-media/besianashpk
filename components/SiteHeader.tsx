@@ -17,7 +17,7 @@ export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   return <header className="siteHeader">
     <Link className="brand" href="/" aria-label="BESIANA Sh.P.K. — Ballina">
-      <Image src="/images/besiana-logo-header-2026.png" alt="BESIANA Sh.P.K." width={2172} height={724} priority unoptimized />
+      <Image src="/images/besiana-logo-header-2026-optimized.png" alt="BESIANA Sh.P.K." width={510} height={170} priority unoptimized />
     </Link>
     <nav aria-label="Navigimi kryesor">{links.map(([href, label]) => <Link className={pathname === href || pathname.startsWith(`${href}/`) ? "isActive" : ""} aria-current={pathname === href ? "page" : undefined} href={href} key={href}>{label}</Link>)}</nav>
     <div className="headerTools">

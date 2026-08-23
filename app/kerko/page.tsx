@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Kërko produkte dhe artikuj",
   description: "Kërkoni në produktet, gradat, aprovimet, specifikimet dhe artikujt CYCLON të BESIANA Sh.P.K.",
   alternates: { canonical: "/kerko" },
+  robots: { index: false, follow: true },
 };
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {

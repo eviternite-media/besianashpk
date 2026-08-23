@@ -3,12 +3,25 @@ import PageHero from "../../components/PageHero";
 import ProductCatalogue from "../../components/ProductCatalogue";
 import { categories, families, products } from "../../data/products";
 
-export const metadata: Metadata = {
-  title: "Të gjitha produktet CYCLON",
-  description: "Katalogu i plotë në shqip me produktet CYCLON për Kosovë, pa gamën marine. Distributor: BESIANA Sh.P.K.",
-};
+type ProductSearchParams = { family?: string; category?: string; grade?: string; q?: string };
 
-export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ family?: string; category?: string; grade?: string; q?: string }> }) {
+export async function generateMetadata({ searchParams }: { searchParams: Promise<ProductSearchParams> }): Promise<Metadata> {
+  const query = await searchParams;
+  const validCategory = categories.includes(query.category || "") ? query.category! : undefined;
+  const suppliedFilters = [query.family, query.category, query.grade, query.q].filter(Boolean).length;
+  const indexableCategory = Boolean(validCategory && suppliedFilters === 1);
+
+  return {
+    title: indexableCategory ? `${validCategory} — produktet CYCLON` : "Të gjitha produktet CYCLON",
+    description: indexableCategory
+      ? `Produktet CYCLON për ${validCategory!.toLowerCase()} në Kosovë, me të dhëna teknike dhe furnizim nga BESIANA Sh.P.K.`
+      : "Katalogu i plotë në shqip me produktet CYCLON për Kosovë, pa gamën marine. Distributor: BESIANA Sh.P.K.",
+    alternates: { canonical: indexableCategory ? `/produktet?category=${encodeURIComponent(validCategory!)}` : "/produktet" },
+    robots: suppliedFilters > 0 && !indexableCategory ? { index: false, follow: true } : { index: true, follow: true },
+  };
+}
+
+export default async function ProductsPage({ searchParams }: { searchParams: Promise<ProductSearchParams> }) {
   const query = await searchParams;
   const initialFamily = families.includes(query.family || "") ? query.family! : "Të gjitha";
   const initialCategory = categories.includes(query.category || "") ? query.category! : "Të gjitha";
