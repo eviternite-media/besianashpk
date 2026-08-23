@@ -30,7 +30,7 @@ test("renders production BESIANA metadata", async () => {
   assert.match(html, /<title>BESIANA Sh\.P\.K\.<\/title>/i);
   assert.match(html, /<meta(?=[^>]*property=["']og:title["'])(?=[^>]*content=["']BESIANA Sh\.P\.K\.["'])[^>]*>/i);
   assert.match(html, /<link(?=[^>]*rel=["']canonical["'])(?=[^>]*href=["']https:\/\/www\.besianashpk\.com\/["'])[^>]*>/i);
-  assert.match(html, /<link(?=[^>]*rel=["']icon["'])(?=[^>]*href=["']https:\/\/www\.besianashpk\.com\/images\/besiana-logo-2026\.png["'])[^>]*>/i);
+  assert.match(html, /<link(?=[^>]*rel=["']icon["'])(?=[^>]*href=["']https:\/\/www\.besianashpk\.com\/favicon-besiana-144\.png["'])(?=[^>]*sizes=["']144x144["'])[^>]*>/i);
   assert.doesNotMatch(html, /Së shpejti/i);
   assert.doesNotMatch(html, /name=["']codex-preview["']/i);
   assert.match(html, /11 KATEGORI · (?:<!-- -->)?307(?:<!-- -->)? PRODUKTE JO-DETARE/i);
