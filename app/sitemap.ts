@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { products } from "../data/products";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://besianashpk.com";
+  const base = "https://www.besianashpk.com";
   const pages = ["", "/produktet", "/artikuj", "/teknologjia", "/aprovimet", "/rreth-nesh", "/besiana", "/biznese", "/kontakt", "/privatesia", "/cookies"];
   return [
     ...pages.map((url) => ({ url: base + url, lastModified: new Date(), changeFrequency: "monthly" as const, priority: url === "" ? 1 : .7 })),

@@ -10,17 +10,25 @@ const displayFont = Barlow_Semi_Condensed({ variable: "--font-display", subsets:
 const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://besianashpk.com"),
-  title: { default: "CYCLON Kosovo — BESIANA Sh.P.K.", template: "%s | CYCLON Kosovo" },
+  metadataBase: new URL("https://www.besianashpk.com"),
+  applicationName: "BESIANA Sh.P.K.",
+  title: { default: "BESIANA Sh.P.K.", template: "%s | BESIANA Sh.P.K." },
   description: "Lubrifikantë profesionalë CYCLON në Kosovë. Distributor zyrtar: BESIANA Sh.P.K.",
-  openGraph: { title: "CYCLON Kosovo — BESIANA Sh.P.K.", description: "Teknologji ndërkombëtare. Mbështetje lokale.", locale: "sq_AL", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "BESIANA Sh.P.K. — Distributor zyrtar i CYCLON në Kosovë" }] },
-  twitter: { card: "summary_large_image", title: "CYCLON Kosovo — BESIANA Sh.P.K.", description: "Teknologji ndërkombëtare. Mbështetje lokale.", images: ["/og.png"] },
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [{ url: "/images/besiana-logo-2026.png", type: "image/png", sizes: "1254x1254" }],
+    shortcut: ["/images/besiana-logo-2026.png"],
+    apple: [{ url: "/images/besiana-logo-2026.png", sizes: "1254x1254", type: "image/png" }],
+  },
+  openGraph: { siteName: "BESIANA Sh.P.K.", url: "/", title: "BESIANA Sh.P.K.", description: "Distributor zyrtar i CYCLON Lubricants në Kosovë.", locale: "sq_AL", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "BESIANA Sh.P.K. — Distributor zyrtar i CYCLON në Kosovë" }] },
+  twitter: { card: "summary_large_image", title: "BESIANA Sh.P.K.", description: "Distributor zyrtar i CYCLON Lubricants në Kosovë.", images: ["/og.png"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const organizationSchema = { "@context": "https://schema.org", "@graph": [
-    { "@type": "Organization", name: "BESIANA Sh.P.K.", email: "besiana.llc@gmail.com", telephone: ["+38344303130", "+38344241118"], description: "Distributor zyrtar i CYCLON Lubricants për Kosovë." },
-    { "@type": "LocalBusiness", name: "BESIANA Sh.P.K. — CYCLON Kosovo", email: "besiana.llc@gmail.com", telephone: "+38344303130", areaServed: { "@type": "Country", name: "Kosovë" } },
+    { "@type": "WebSite", "@id": "https://www.besianashpk.com/#website", url: "https://www.besianashpk.com/", name: "BESIANA Sh.P.K.", alternateName: "CYCLON Kosovo", publisher: { "@id": "https://www.besianashpk.com/#organization" } },
+    { "@type": "Organization", "@id": "https://www.besianashpk.com/#organization", url: "https://www.besianashpk.com/", name: "BESIANA Sh.P.K.", alternateName: "CYCLON Kosovo", logo: { "@type": "ImageObject", url: "https://www.besianashpk.com/images/besiana-logo-2026.png", width: 1254, height: 1254 }, image: "https://www.besianashpk.com/images/besiana-logo-2026.png", email: "besiana.llc@gmail.com", telephone: ["+38344303130", "+38344241118"], description: "Distributor zyrtar i CYCLON Lubricants për Kosovë." },
+    { "@type": "LocalBusiness", "@id": "https://www.besianashpk.com/#localbusiness", url: "https://www.besianashpk.com/", name: "BESIANA Sh.P.K.", alternateName: "CYCLON Kosovo", logo: "https://www.besianashpk.com/images/besiana-logo-2026.png", image: "https://www.besianashpk.com/images/besiana-logo-2026.png", email: "besiana.llc@gmail.com", telephone: "+38344303130", areaServed: { "@type": "Country", name: "Kosovë" } },
   ] };
   return <html lang="sq"><body className={`${bodyFont.variable} ${displayFont.variable} ${mono.variable}`}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
