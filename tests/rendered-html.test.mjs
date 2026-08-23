@@ -86,6 +86,9 @@ test("renders production BESIANA metadata", async () => {
     { waitUntil() {}, passThroughOnException() {} },
   );
   const noApprovalHtml = await noApprovalResponse.text();
+  assert.match(noApprovalHtml, /"@type":"ItemPage"/i);
+  assert.match(noApprovalHtml, /"@type":"Thing"/i);
+  assert.doesNotMatch(noApprovalHtml, /"@type":"Product"/i);
   assert.match(noApprovalHtml, /është graso profesionale nga linja e specializuar CYCLON/i);
   assert.doesNotMatch(noApprovalHtml, /Premium quality, versatile, multipurpose/i);
   assert.doesNotMatch(noApprovalHtml, /href=["']#aprovimet["']/i);
@@ -109,6 +112,7 @@ test("renders production BESIANA metadata", async () => {
     { waitUntil() {}, passThroughOnException() {} },
   );
   const articleHtml = await articleResponse.text();
+  assert.doesNotMatch(articleHtml, /"@type":"Product"/i);
   assert.match(articleHtml, /është vaj motori për vetura dhe automjete të lehta/i);
   assert.match(articleHtml, /Çfarë pune kryen\?/i);
   assert.match(articleHtml, /Pse nevojitet\?/i);

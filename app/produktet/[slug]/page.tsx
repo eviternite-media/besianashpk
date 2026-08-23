@@ -38,19 +38,31 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const packagingIndex = approvals.length ? "04" : "03";
   const sourceIndex = approvals.length ? "05" : "04";
   const related = products.filter((item) => item.category === product.category && item.slug !== product.slug).slice(0, 4);
+  const productUrl = `https://www.besianashpk.com/produktet/${product.slug}`;
+  const productImagePath = product.image || product.officialImage;
+  const productImage = productImagePath
+    ? new URL(productImagePath, "https://www.besianashpk.com").toString()
+    : undefined;
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    image: product.image || product.officialImage,
-    brand: { "@type": "Brand", name: "CYCLON" },
+    "@type": "ItemPage",
+    "@id": `${productUrl}#webpage`,
+    url: productUrl,
+    name: `${product.name} | BESIANA Sh.P.K.`,
     description: description || productCardDescription(product),
-    category: product.category,
-    manufacturer: { "@type": "Organization", name: "LPC S.A." },
-    additionalProperty: [
-      ...(product.grade ? [{ "@type": "PropertyValue", name: "Grada", value: product.grade }] : []),
-      ...product.specifications.slice(0, 20).map((value) => ({ "@type": "PropertyValue", name: "Specifikimi", value })),
-    ],
+    inLanguage: "sq",
+    isPartOf: { "@id": "https://www.besianashpk.com/#website" },
+    primaryImageOfPage: productImage ? { "@type": "ImageObject", url: productImage } : undefined,
+    mainEntity: {
+      "@type": "Thing",
+      "@id": `${productUrl}#item`,
+      name: product.name,
+      description: description || productCardDescription(product),
+      image: productImage,
+      identifier: product.slug,
+      url: productUrl,
+    },
+    keywords: articleKeywords(product).join(", "),
   };
 
   return <main className="productPage">
