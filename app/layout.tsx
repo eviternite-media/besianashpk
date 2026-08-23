@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   description: "Lubrifikantë profesionalë CYCLON në Kosovë. Distributor zyrtar: BESIANA Sh.P.K.",
   alternates: { canonical: "/" },
   icons: {
-    icon: [{ url: "/images/besiana-logo-2026.png", type: "image/png", sizes: "1254x1254" }],
-    shortcut: ["/images/besiana-logo-2026.png"],
-    apple: [{ url: "/images/besiana-logo-2026.png", sizes: "1254x1254", type: "image/png" }],
+    icon: [{ url: "/favicon-besiana-144.png", type: "image/png", sizes: "144x144" }],
+    shortcut: ["/favicon-besiana-144.png"],
+    apple: [{ url: "/favicon-besiana-144.png", sizes: "144x144", type: "image/png" }],
   },
   openGraph: { siteName: "BESIANA Sh.P.K.", url: "/", title: "BESIANA Sh.P.K.", description: "Distributor zyrtar i CYCLON Lubricants në Kosovë.", locale: "sq_AL", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "BESIANA Sh.P.K. — Distributor zyrtar i CYCLON në Kosovë" }] },
   twitter: { card: "summary_large_image", title: "BESIANA Sh.P.K.", description: "Distributor zyrtar i CYCLON Lubricants në Kosovë.", images: ["/og.png"] },
