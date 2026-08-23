@@ -19,7 +19,7 @@ export function generateStaticParams() { return products.map((product) => ({ slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const product = productBySlug((await params).slug);
   if (!product) return {};
-  const socialImage = product.image ? new URL(product.image, "https://besianashpk.com").toString() : null;
+  const socialImage = product.image ? new URL(product.image, "https://www.besianashpk.com").toString() : null;
   return {
     title: articleTitle(product),
     description: articleExcerpt(product),
@@ -46,11 +46,11 @@ export default async function ProductArticle({ params }: { params: Promise<{ slu
         headline: articleTitle(product),
         description: articleExcerpt(product),
         inLanguage: "sq",
-        mainEntityOfPage: `https://besianashpk.com/artikuj/${product.slug}`,
-        image: product.image ? new URL(product.image, "https://besianashpk.com").toString() : undefined,
+        mainEntityOfPage: `https://www.besianashpk.com/artikuj/${product.slug}`,
+        image: product.image ? new URL(product.image, "https://www.besianashpk.com").toString() : undefined,
         about: { "@type": "Product", name: product.name, brand: { "@type": "Brand", name: "CYCLON" }, category: product.category },
-        author: { "@type": "Organization", name: "BESIANA Sh.P.K.", url: "https://besianashpk.com/besiana" },
-        publisher: { "@type": "Organization", name: "BESIANA Sh.P.K.", url: "https://besianashpk.com" },
+        author: { "@type": "Organization", name: "BESIANA Sh.P.K.", url: "https://www.besianashpk.com/besiana" },
+        publisher: { "@type": "Organization", name: "BESIANA Sh.P.K.", url: "https://www.besianashpk.com" },
         keywords: keywords.join(", "),
       },
       {

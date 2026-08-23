@@ -27,8 +27,11 @@ test("renders production BESIANA metadata", async () => {
     /^text\/html\b/i,
   );
   const html = await response.text();
-  assert.match(html, /<title>Lubrifikantë CYCLON në Kosovë — BESIANA Sh\.P\.K\./i);
-  assert.match(html, /<meta(?=[^>]*property=["']og:title["'])(?=[^>]*content=["']CYCLON Kosovo — BESIANA Sh\.P\.K\.["'])[^>]*>/i);
+  assert.match(html, /<title>BESIANA Sh\.P\.K\.<\/title>/i);
+  assert.match(html, /<meta(?=[^>]*property=["']og:title["'])(?=[^>]*content=["']BESIANA Sh\.P\.K\.["'])[^>]*>/i);
+  assert.match(html, /<link(?=[^>]*rel=["']canonical["'])(?=[^>]*href=["']https:\/\/www\.besianashpk\.com\/["'])[^>]*>/i);
+  assert.match(html, /<link(?=[^>]*rel=["']icon["'])(?=[^>]*href=["']https:\/\/www\.besianashpk\.com\/images\/besiana-logo-2026\.png["'])[^>]*>/i);
+  assert.doesNotMatch(html, /Së shpejti/i);
   assert.doesNotMatch(html, /name=["']codex-preview["']/i);
   assert.match(html, /11 KATEGORI · (?:<!-- -->)?307(?:<!-- -->)? PRODUKTE JO-DETARE/i);
   assert.match(html, /Krijuar për(?:<br\s*\/?>)?performancë\./i);
@@ -131,5 +134,5 @@ test("renders production BESIANA metadata", async () => {
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
-  assert.match(await robotsResponse.text(), /https:\/\/besianashpk\.com\/sitemap\.xml/i);
+  assert.match(await robotsResponse.text(), /https:\/\/www\.besianashpk\.com\/sitemap\.xml/i);
 });

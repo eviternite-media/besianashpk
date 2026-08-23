@@ -7,7 +7,7 @@ import ScrollReveal from "../components/ScrollReveal";
 import { articleExcerpt, articleTags, articleTitle, categories, products } from "../data/products";
 
 export const metadata: Metadata = {
-  title: "Lubrifikantë CYCLON në Kosovë — BESIANA Sh.P.K.",
+  title: { absolute: "BESIANA Sh.P.K." },
   description: "Katalogu CYCLON për Kosovë me produkte jo-detare, të dhëna teknike, artikuj dhe kontakt të drejtpërdrejtë me BESIANA Sh.P.K.",
   alternates: { canonical: "/" },
 };

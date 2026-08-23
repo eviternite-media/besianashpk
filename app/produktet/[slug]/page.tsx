@@ -17,7 +17,7 @@ export function generateStaticParams() { return products.map((product) => ({ slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const product = productBySlug((await params).slug);
   if (!product) return {};
-  const socialImage = product.image ? new URL(product.image, "https://besianashpk.com").toString() : null;
+  const socialImage = product.image ? new URL(product.image, "https://www.besianashpk.com").toString() : null;
   return {
     title: product.name,
     description: productCardDescription(product),
