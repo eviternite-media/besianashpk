@@ -54,7 +54,7 @@ try {
 
   while ($true) {
     try {
-      $response = Invoke-RestMethod -Uri "$apiUrl?after=$lastSeen" -Headers @{ 'X-Admin-Token' = $adminToken } -TimeoutSec 20
+      $response = Invoke-RestMethod -Uri "${apiUrl}?after=$lastSeen" -Headers @{ 'X-Admin-Token' = $adminToken } -TimeoutSec 20
       $latestId = [int64]$response.latestId
       if (-not $hasState) {
         $lastSeen = $latestId
