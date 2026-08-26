@@ -139,4 +139,30 @@ test("renders production BESIANA metadata", async () => {
     { waitUntil() {}, passThroughOnException() {} },
   );
   assert.match(await robotsResponse.text(), /https:\/\/www\.besianashpk\.com\/sitemap\.xml/i);
+
+  const contactResponse = await worker.fetch(
+    new Request("http://localhost/kontakt", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const contactHtml = await contactResponse.text();
+  assert.match(contactHtml, /Verifiko që je njeri/i);
+  assert.match(contactHtml, /Dërgo kërkesën/i);
+  assert.doesNotMatch(contactHtml, /Faqja nuk ruan të dhënat tuaja/i);
+
+  const adminResponse = await worker.fetch(
+    new Request("http://localhost/admin", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const adminHtml = await adminResponse.text();
+  assert.match(adminHtml, /Paneli administrativ/i);
+  assert.match(adminHtml, /noindex/i);
+
+  const privacyResponse = await worker.fetch(
+    new Request("http://localhost/privatesia", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.match(await privacyResponse.text(), /ruhen deri në 12 muaj/i);
 });
