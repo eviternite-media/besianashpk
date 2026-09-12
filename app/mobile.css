@@ -2,7 +2,8 @@
 .phoneHome, .phoneBottomNav, .phoneProductBar, .phoneProductBrand, .phoneProductFacts, .phoneProductSpecs, .phoneProductCta, .legacyMobileLanding { display: none; }
 @media (max-width: 640px) {
   body { --phone-red: #870020; --phone-ink: #0a0a0b; background: #fff; color: #121214; padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
-  .siteHeader { position: sticky; top: 0; height: 76px; padding: 0 22px; background: #090909; border: 0; }
+  body { padding-top: 76px; }
+  .siteHeader { position: fixed; top: 0; left: 0; right: 0; height: 76px; padding: 0 22px; background: #090909; border: 0; }
   .brand img { width: 130px; height: 46px; }
   .mobileMenuButton { background: transparent; border: 0; border-radius: 0; }
   .mobileMenuButton span { height: 1.5px; width: 23px; }
@@ -59,6 +60,7 @@
   .phoneBottomNav a[aria-current="page"] svg { stroke-width: 2.3; }
   .footer { padding-bottom: 24px; }
   body:has(.productPage) .siteHeader { display: none; }
+  body:has(.productPage), body:has(.adminPage), body:has(.adminGate) { padding-top: 0; }
   body:has(.adminPage), body:has(.adminGate) { padding-bottom: 0; }
   .productPage { background: #fff; color: #111; }
   .phoneProductBar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 7px 18px; color: #111; }
