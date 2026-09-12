@@ -1,0 +1,132 @@
+/* Reference-led phone experience; desktop retains its existing layout. */
+.phoneHome, .phoneBottomNav, .phoneProductBar, .phoneProductBrand, .phoneProductFacts, .phoneProductSpecs, .phoneProductCta, .legacyMobileLanding { display: none; }
+@media (max-width: 640px) {
+  body { --phone-red: #870020; --phone-ink: #0a0a0b; background: #fff; color: #121214; padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  .siteHeader { position: sticky; top: 0; height: 76px; padding: 0 22px; background: #090909; border: 0; }
+  .brand img { width: 130px; height: 46px; }
+  .mobileMenuButton { background: transparent; border: 0; border-radius: 0; }
+  .mobileMenuButton span { height: 1.5px; width: 23px; }
+  .mobileMenu { top: 76px; max-height: calc(100dvh - 156px); overflow-y: auto; }
+  .phoneHome { display: block; }
+  .phoneIntro { position: relative; isolation: isolate; overflow: hidden; background: #080808; color: #fff; padding: 48px 26px 28px; min-height: calc(100svh - 154px - env(safe-area-inset-bottom,0px)); display: flex; flex-direction: column; }
+  .phoneIntro::before, .phoneShopTop::before { content: ""; position: absolute; z-index: -1; inset: 0; background: repeating-linear-gradient(137deg, transparent 0 39px, rgba(255,255,255,.055) 40px, transparent 41px 80px); mask-image: linear-gradient(transparent 25%, #000); }
+  .phoneRibbon { position: absolute; right: -135px; top: 6px; width: 310px; height: 310px; border: 64px solid #690018; border-bottom-color: #34000c; border-radius: 48% 0 50% 45%; transform: rotate(-35deg) skew(-14deg); z-index: -1; opacity: .85; }
+  .phoneIntroEyebrow { margin: 18px 0 28px; font: 500 13px/1.5 var(--font-body); letter-spacing: .14em; color: #c5c5c8; }
+  .phoneIntro h1 { font: italic 800 clamp(43px, 12.4vw, 76px)/1.02 var(--font-display), sans-serif; letter-spacing: -.025em; color: #fff; margin: 0; }
+  .phoneIntroText { margin: 26px 0 44px; color: #bdbdc0; font: 400 16px/1.55 var(--font-body); }
+  .phoneIntroText::before { content: ""; display: block; width: 54px; height: 2px; background: var(--phone-red); margin-bottom: 22px; }
+  .phonePrimary { min-height: 60px; padding: 18px 27px; background: linear-gradient(115deg,#720019,#970029); color: #fff; border-radius: 32px; display: flex; justify-content: center; align-items: center; gap: 40px; font: 750 16px/1.4 var(--font-body); }
+  .phonePrimary span { font-size: 25px; font-weight: 400; }
+  .phoneIntroFoot { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding-top: 55px; margin-top: auto; font: 500 12px/1.5 var(--font-body); color: #aeafb3; }
+  .phoneIntroFoot > span + span { border-left: 1px solid #333; padding-left: 20px; }
+  .phoneIntroFoot strong { display: block; font-size: 16px; color: #fff; }
+  .phoneShop { scroll-margin-top: 76px; }
+  .phoneShopTop { position: relative; isolation: isolate; background: #090909; color: #fff; padding: 16px 20px 18px; }
+  .phoneShopTop h2 { font: italic 800 clamp(39px, 10.7vw, 60px)/.99 var(--font-display), sans-serif; letter-spacing: -.025em; color: #fff; margin: 0; }
+  .phoneShopTop h2 span { color: #a3002c; }
+  .phoneShopTop h2, .phoneSectionTitle h3, .phoneProductSpecs h2 { text-transform: none; }
+  .phoneShopTop > p { font-size: 16px; line-height: 1.4; color: #bcbcc0; margin: 12px 0 18px; }
+  .phoneSearch { display: flex; align-items: center; gap: 9px; height: 49px; padding: 0 15px; background: #fff; color: #151515; border-radius: 30px; }
+  .phoneSearch svg { width: 20px; flex: 0 0 20px; }
+  .phoneSearch input { min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; color: #222; font: 400 16px var(--font-body); }
+  .phoneSearch input::placeholder { font-size: 12px; }
+  .phoneSearch button { background: none; border: 0; width: 28px; min-height: 44px; cursor: pointer; color: var(--phone-red); }
+  .phoneSearch:focus-within { outline: 3px solid #c14466; outline-offset: 3px; }
+  .phoneCategories { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; margin-top: 18px; }
+  .phoneCategories a { text-align: center; display: flex; align-items: center; flex-direction: column; gap: 8px; }
+  .phoneCategories a > span { width: clamp(50px, 16vw, 72px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(145deg,#2d2d2d,#202020); }
+  .phoneCategories a > span.isPrimary { background: var(--phone-red); }
+  .phoneCategories svg { width: 27px; height: 27px; }
+  .phoneCategories strong { font: 500 12px/1.4 var(--font-body); max-width: 95px; }
+  .phoneCollections { padding: 18px 16px 30px; background: #fff; color: #111; }
+  .phoneSectionTitle { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .phoneSectionTitle h3 { font: 750 15px var(--font-body); margin: 0; }
+  .phoneSectionTitle a { font-size: 12px; font-weight: 700; color: var(--phone-red); padding-block: 10px; }
+  .phoneSeriesGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  .phoneSeries { min-height: 132px; position: relative; overflow: hidden; isolation: isolate; padding: 12px; border-radius: 17px; background: linear-gradient(135deg,#080808,#1c1c1c); color: #fff; }
+  .phoneSeriesEVO { background: linear-gradient(140deg,#9b002b,#590018); }
+  .phoneSeries > div { position: relative; z-index: 2; width: 55%; }
+  .phoneSeries h4 { margin: 0 0 7px; font: italic 800 32px/1 var(--font-display),sans-serif; color: #fff; }
+  .phoneSeries p { margin: 0; color: #ccc; font: 400 12px/1.4 var(--font-body); }
+  .phoneSeries > div > span { display: block; font-size: 24px; margin-top: 8px; }
+  .phoneSeries img { object-fit: contain; object-position: right bottom; width: 53% !important; height: 84% !important; left: auto !important; top: auto !important; bottom: 8px !important; right: 0 !important; filter: drop-shadow(0 5px 7px #0005); }
+  .phoneHelp { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid #eee; margin-top: 22px; padding-top: 20px; font-size: 14px; line-height: 1.6; color: #666; }
+  .phoneHelp strong { display: block; color: var(--phone-red); font-size: 14px; }
+  .phoneBottomNav { display: grid; position: fixed; z-index: 110; bottom: 0; left: 0; right: 0; grid-template-columns: repeat(4,minmax(0,1fr)); padding: 9px 10px calc(9px + env(safe-area-inset-bottom,0px)); background: rgba(255,255,255,.97); backdrop-filter: blur(16px); border-top: 1px solid #e9e9e9; color: #666; }
+  .phoneBottomNav a { min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font: 500 12px var(--font-body); }
+  .phoneBottomNav a + a { border-left: 1px solid #eee; }
+  .phoneBottomNav a[aria-current="page"] { color: var(--phone-red); font-weight: 750; }
+  .phoneBottomNav a[aria-current="page"] svg { stroke-width: 2.3; }
+  .footer { padding-bottom: 24px; }
+  body:has(.productPage) .siteHeader { display: none; }
+  body:has(.adminPage), body:has(.adminGate) { padding-bottom: 0; }
+  .productPage { background: #fff; color: #111; }
+  .phoneProductBar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 7px 18px; color: #111; }
+  .phoneProductBar > a, .phoneProductBar button { width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; color: #111; cursor: pointer; font-size: 29px; }
+  .phoneProductBar > span { font: 700 12px var(--font-body); letter-spacing: .07em; }
+  .phoneProductBar b { padding: 0 8px; color: #aaa; }
+  .phoneProductBar small:not(:empty) { position: absolute; right: 18px; top: 59px; padding: 10px 14px; background: #111; color: #fff; border-radius: 10px; font-size: 12px; max-width: 260px; }
+  .productDetailHero { padding: 0 0 20px; background: #fff; color: #111; border: 0; }
+  .productDetailGrid { width: 100%; display: flex; flex-direction: column; gap: 0; }
+  .productDetailVisual { height: clamp(290px, 89vw, 410px); width: 100%; border: 0; border-radius: 0 0 42px 42px; clip-path: none; background: radial-gradient(ellipse at 50% 83%,#e9dce0, #faf7f8 48%,#fff 80%); }
+  .productDetailVisual > img { padding: 15px 45px 25px; filter: drop-shadow(0 12px 9px #42001420); }
+  .productDetailBadge { display: none; }
+  .productDetailCopy { padding: 22px 22px 0; width: 100%; min-width: 0; }
+  .productDetailCopy .breadcrumbs, .productDetailLabels, .productQuickFacts, .productDetailActions, .productNameBrand { display: none; }
+  .phoneProductBrand { display: block; font: 800 13px var(--font-body); color: var(--phone-red); margin-bottom: 6px; }
+  .productDetailCopy h1 { font: 800 clamp(27px, 8vw, 40px)/1.08 var(--font-body); letter-spacing: -.045em; margin: 0 0 12px; color: #0b0b0b; overflow-wrap: normal; }
+  .productLead { font-size: 16px; line-height: 1.5; color: #666; margin: 0; max-width: none; }
+  .phoneProductFacts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin: 22px 0; padding: 15px 0; border-block: 1px solid #eee; }
+  .phoneProductFacts > div { display: flex; flex-direction: column-reverse; gap: 4px; padding: 0 12px; min-width: 0; }
+  .phoneProductFacts > div:first-child { padding-left: 0; }
+  .phoneProductFacts > div + div { border-left: 1px solid #eee; }
+  .phoneProductFacts dt { color: #777; font-size: 12px; }
+  .phoneProductFacts dd { margin: 0; color: var(--phone-red); font-size: 14px; font-weight: 800; overflow-wrap: anywhere; }
+  .phoneProductSpecs { display: block; border: 1px solid #eaeaea; border-radius: 17px; margin: 14px 0; padding: 16px; background: linear-gradient(125deg,#fff,#fafafa); }
+  .phoneProductSpecs h2 { font: 750 16px var(--font-body); margin: 0 0 8px; color: #111; }
+  .phoneProductSpecs dl { margin: 0; }
+  .phoneProductSpecs dl > div { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 12px; border-top: 1px solid #eee; padding: 10px 0; font-size: 13px; line-height: 1.5; }
+  .phoneProductSpecs dt { color: #777; }
+  .phoneProductSpecs dd { margin: 0; text-align: right; overflow-wrap: anywhere; color: #181818; }
+  .phoneSuitable p { font-size: 14px; color: #555; line-height: 1.6; margin: 6px 0 0; }
+  .phoneProductCta { position: fixed; z-index: 110; bottom: 0; left: 0; right: 0; display: block; padding: 12px 18px calc(12px + env(safe-area-inset-bottom,0px)); background: rgba(255,255,255,.97); border-top: 1px solid #eee; }
+  .phoneProductCta .phonePrimary { gap: 12px; justify-content: space-between; border-radius: 26px; font-size: 15px; }
+  .productInformation { padding: 24px 0 40px; background: #fff; color: #161616; }
+  .productInfoNav { gap: 8px; }
+  .productInfoNav a { padding: 12px; border: 1px solid #e8e8e8; border-radius: 12px; background: #fafafa; font-size: 13px; }
+  .productInfoNav > span { color: #666; font-size: 12px; }
+  .productInfoContent h2 { font: 750 25px/1.2 var(--font-body); letter-spacing: -.025em; }
+  .productInfoContent > section { padding: 26px 0; border-color: #eee; scroll-margin-top: 78px; }
+  .productInfoContent .officialCopy { color: #555; font-size: 16px; line-height: 1.7; }
+  .specificationList > span, .packagingGrid > span { border-radius: 10px; font-size: 13px; }
+  .productContactBand { padding: 28px 0; }
+  .productContactBand h2 { font-size: 25px; }
+  .relatedProducts { padding-block: 30px; }
+  .relatedProductGrid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+  .relatedProductGrid > a { display: flex; flex-direction: column; border: 1px solid #eee; border-radius: 16px; padding: 12px; gap: 8px; }
+  .relatedProductGrid > a > div { width: 100%; height: 170px; }
+  .relatedProductGrid strong { font-size: 14px; overflow-wrap: anywhere; }
+  .relatedProductGrid small { font-size: 12px; }
+  .catalogueSection { background: #fff; padding-block: 24px; }
+  .catalogueToolbar { border: 1px solid #eee; border-radius: 18px; padding: 16px; background: #fafafa; }
+  .catalogueFilters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .catalogueFilters > label:first-child { grid-column: 1 / -1; }
+  .catalogueFilters select { width: 100%; min-width: 0; border-radius: 10px; font-size: 16px; }
+  .catalogueSearch input { font-size: 16px; }
+  .catalogueMeta { gap: 15px; font-size: 12px; line-height: 1.5; }
+  .productCardGrid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .productCard { border: 1px solid #eaeaea; border-radius: 17px; overflow: hidden; background: #fff; }
+  .productCardImage { height: 185px; background: radial-gradient(ellipse at bottom,#efe2e6,#fff 75%); }
+  .productCardImage img { padding: 25px 15px 12px; }
+  .productCardImage > span { font-size: 12px; border-radius: 6px; }
+  .productCardBody { padding: 12px; }
+  .productCardBody h2 { font-size: 16px; line-height: 1.25; letter-spacing: -.025em; }
+  .productCardBody > p { font-size: 13px; line-height: 1.5; }
+  .productCardMeta { flex-wrap: wrap; gap: 5px; }
+  .productCardMeta > span { font-size: 12px; }
+  .productCardSpecs { display: none; }
+  .productCardLinks { flex-wrap: wrap; gap: 10px; }
+  .productCardLinks a { font-size: 12px; min-height: 32px; }
+  .phoneHome a:focus-visible, .phoneBottomNav a:focus-visible, .phoneProductBar a:focus-visible, .phoneProductBar button:focus-visible { outline: 3px solid #b64d68; outline-offset: 3px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+}

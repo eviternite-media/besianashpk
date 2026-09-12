@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import MobileProductBar from "../../../components/MobileProductBar";
 import {
   approvedSpecifications,
   articleKeywords,
@@ -66,6 +67,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   };
 
   return <main className="productPage">
+    <MobileProductBar name={product.name} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <section className="productDetailHero"><div className="container productDetailGrid">
       <div className="productDetailVisual">
@@ -75,8 +77,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="productDetailCopy">
         <nav className="breadcrumbs" aria-label="Gjurmët e faqes"><Link href="/">Ballina</Link><span>/</span><Link href="/produktet">Produktet</Link><span>/</span><span>{product.shortName}</span></nav>
         <div className="productDetailLabels"><span>{product.family}</span><span>{product.category}</span>{product.grade && <strong>{product.grade}</strong>}</div>
-        <h1>{product.name}</h1>
+        <span className="phoneProductBrand">CYCLON</span>
+        <h1><span className="productNameBrand">CYCLON </span>{product.name.replace(/^CYCLON\s+/i, "")}</h1>
         <p className="productLead">{productCardDescription(product)}</p>
+        <dl className="phoneProductFacts"><div><dt>Viskoziteti</dt><dd>{product.grade || "Sipas produktit"}</dd></div><div><dt>Gama</dt><dd>{product.family}</dd></div><div><dt>Paketimi</dt><dd>{product.packaging.find((size) => /^4\s*l$/i.test(size)) || product.packaging[product.packaging.length - 1] || "Na kontaktoni"}</dd></div></dl>
+        <section className="phoneProductSpecs" aria-label="Specifikimet e produktit"><h2>Specifikimet</h2><dl><div><dt>Viskoziteti</dt><dd>{product.grade || "Nuk aplikohet"}</dd></div><div><dt>Specifikimet</dt><dd>{specifications.slice(0, 3).join(", ") || "Shiko fletën teknike"}</dd></div><div><dt>Paketimi</dt><dd>{product.packaging.join(", ") || "Konfirmoni disponueshmërinë"}</dd></div><div><dt>Lloji</dt><dd>{product.type}</dd></div></dl></section>
+        <section className="phoneProductSpecs phoneSuitable"><h2>Aplikimi</h2><p>{product.category}</p></section>
         <dl className="productQuickFacts"><div><dt>Gama</dt><dd>{product.family}</dd></div><div><dt>Grada</dt><dd>{product.grade || "Nuk aplikohet"}</dd></div><div><dt>Paketimet</dt><dd>{product.packaging.length}</dd></div><div><dt>Të dhëna teknike</dt><dd>{product.specifications.length}</dd></div></dl>
         <div className="productDetailActions"><Link className="button buttonDark" href={`/kontakt?product=${encodeURIComponent(product.name)}`}>Kërko disponueshmërinë <span>→</span></Link><Link className="arrowLink" href={`/artikuj/${product.slug}`}>Lexo artikullin →</Link></div>
       </div>
@@ -96,5 +102,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <section className="productContactBand"><div className="container"><div><span>BESIANA Sh.P.K. · CYCLON KOSOVË</span><h2>Konfirmoni produktin para porosisë.</h2></div><div><a href="tel:+38344303130">+383 44 303 130</a><Link className="button buttonLight" href={`/kontakt?product=${encodeURIComponent(product.name)}`}>Kontaktoni ekipin →</Link></div></div></section>
 
     <section className="relatedProducts"><div className="container"><div className="relatedHeading"><span>PRODUKTE TË LIDHURA</span><Link href={`/produktet?category=${encodeURIComponent(product.category)}`}>Shiko kategorinë →</Link></div><div className="relatedProductGrid">{related.map((item) => <Link href={`/produktet/${item.slug}`} key={item.slug}><div>{item.image ? <Image src={item.image} alt={item.name} fill unoptimized sizes="260px" /> : <span>CYCLON</span>}</div><small>{item.family} · {item.grade || item.type}</small><strong>{item.name}</strong><span>→</span></Link>)}</div></div></section>
+    <div className="phoneProductCta"><Link className="phonePrimary" href={`/kontakt?product=${encodeURIComponent(product.name)}`}>Kërko disponueshmërinë <span aria-hidden="true">→</span></Link></div>
   </main>;
 }

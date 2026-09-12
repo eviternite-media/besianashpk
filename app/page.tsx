@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CategoryExplorer, { type CategoryExplorerItem } from "../components/CategoryExplorer";
 import ScrollReveal from "../components/ScrollReveal";
+import MobileHome from "../components/MobileHome";
 import { articleExcerpt, articleTags, articleTitle, categories, products } from "../data/products";
 
 export const metadata: Metadata = {
@@ -53,61 +54,14 @@ function buildCategoryItems(): CategoryExplorerItem[] {
 
 export default function Home() {
   const heroProduct = products.find((product) => product.slug === "cyclon-evo-v1-ll-0w-30")!;
-  const spotlightProduct = products.find((product) => product.slug === "cyclon-pro-v1-ll-5w-30")!;
   const featuredSlugs = ["cyclon-evo-v1-ll-0w-30", "cyclon-eco-r-2-ultra-s-0w-20", "cyclon-pro-v1-ll-5w-30", "cyclon-max-x-100-5w-40"];
   const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)).filter(Boolean) as typeof products;
   const articles = featured.slice(0, 3);
   const quickGrades = ["0W-20", "0W-30", "5W-30", "5W-40"];
-  const mobileCategories = [
-    ["01", "Vajra për vetura", "Vetura dhe automjete të lehta"],
-    ["02", "Vajra industriale", "Industri"],
-    ["03", "Vajra për kamionë", "Kamionë dhe automjete të rënda"],
-    ["04", "Graso", "Graso"],
-    ["05", "Fluide", "Lëngje teknike"],
-  ];
 
   return <main className="homePage automotiveHome">
     <ScrollReveal />
-    <div className="mobileLanding">
-      <section className="mobileHero" aria-labelledby="mobile-hero-title">
-        <div className="mobileHeroCopy" data-reveal>
-          <span>DISTRIBUTOR ZYRTAR I CYCLON · KOSOVË</span>
-          <h1 id="mobile-hero-title">Krijuar për<br />performancë.</h1>
-          <p>Lubrifikantë profesionalë për performancë pa kompromis.</p>
-        </div>
-        <Link className="mobileHeroProduct" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties} href={`/produktet/${heroProduct.slug}`} aria-label={`Shiko ${heroProduct.name}`}>
-          <span className="mobileProductBadge">ZGJEDHJA KRYESORE</span>
-          {heroProduct.image && <Image src={heroProduct.image} alt={heroProduct.name} fill priority unoptimized sizes="330px" />}
-          <div><strong>EVO V1 LL</strong><span>0W-30</span></div>
-        </Link>
-        <div className="mobileHeroActions" data-reveal style={{ "--reveal-delay": "140ms" } as CSSProperties}>
-          <Link href="/produktet">Shiko produktet <span>→</span></Link>
-          <Link href="/kontakt">Kontakto <span>→</span></Link>
-        </div>
-      </section>
-
-      <section className="mobileSpotlight" aria-labelledby="mobile-spotlight-title">
-        <div className="mobileSectionHeading" data-reveal><span>PRODUKT I PËRZGJEDHUR</span><h2 id="mobile-spotlight-title">Performancë e verifikuar.</h2></div>
-        <Link className="mobileSpotlightCard" href={`/produktet/${spotlightProduct.slug}`} data-reveal>
-          <div className="mobileSpotlightStage">{spotlightProduct.image && <Image src={spotlightProduct.image} alt={spotlightProduct.name} fill unoptimized sizes="310px" />}</div>
-          <div className="mobileSpotlightInfo"><span>CYCLON · {spotlightProduct.family}</span><h3>{spotlightProduct.name.replace("CYCLON ", "")}</h3><div><strong>5W-30</strong><small>VAJ MOTORIK</small></div><b>Shiko më shumë <span>→</span></b></div>
-        </Link>
-      </section>
-
-      <section className="mobileCategoryLinks" aria-labelledby="mobile-categories-title">
-        <div className="mobileSectionHeading" data-reveal><span>ZGJIDH SIPAS APLIKIMIT</span><h2 id="mobile-categories-title">Çfarë po kërkoni?</h2></div>
-        <nav aria-label="Kategoritë kryesore" data-reveal>{mobileCategories.map(([number, label, category]) => <Link href={`/produktet?category=${encodeURIComponent(category)}`} key={category}><span>{number}</span><strong>{label}</strong><i>→</i></Link>)}</nav>
-        <Link className="mobileAllProducts" href="/kategorite">Të gjitha 11 kategoritë <span>→</span></Link>
-      </section>
-
-      <section className="mobileFinalCta" data-reveal>
-        <span>BESIANA Sh.P.K. · CYCLON KOSOVO</span>
-        <h2>Produkti i duhur nis me këshillën e duhur.</h2>
-        <p>Na tregoni automjetin ose pajisjen. Ne ju ndihmojmë të gjeni produktin e përshtatshëm.</p>
-        <Link href="/kontakt">Na kontaktoni <span>→</span></Link>
-        <a href="tel:+38344303130">+383 44 303 130</a>
-      </section>
-    </div>
+    <MobileHome />
 
     <section className="performanceHero" aria-labelledby="performance-title">
       <div className="performanceHeroInner container">
